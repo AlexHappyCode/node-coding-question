@@ -1,5 +1,14 @@
 extends layout
 
 block content
-  h1= title
   p Welcome to #{title}
+
+  Form(action='/users/register' method='POST')
+    label(for='registerName') Name:
+    input(type='text' id='registerName' placeholder='enter your name')
+    label(for='registerEmail') Email:
+    input(type='email' id='registerEmail' placeholder='enter your email')
+    label(for='registerPassword') Password: 
+    input(type='password' id='registerPassword' placeholder='enter your password')
+    input(type='submit')
+  
