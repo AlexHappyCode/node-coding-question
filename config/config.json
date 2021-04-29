@@ -1,8 +1,8 @@
 {
   "development": {
-    "username": "root",
+    "username": "bolo",
     "password": null,
-    "database": "database_development",
+    "database": "node_challenge",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
