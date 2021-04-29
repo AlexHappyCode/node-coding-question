@@ -13,15 +13,11 @@ router.post('/', async (req, res, next) => {
       msg: 'error password undefined, likely user does not exist.' });
   }
   let { password: hashedPW } = result;
-  console.log(hashedPW);
-  console.log('password', password);
 
-  bcrypt.compare(password, hashedPW, (err, result) => {
-    if (result) {
-      console.log(result);
+  bcrypt.compare(password, hashedPW, (err, isCorrect) => {
+    if (isCorrect) {
       return res.status(200).json({ msg: 'successful login' });
     } else {
-      console.log(err);
       return res.status(401).json({ msg: 'incorrect password' });
     }
   });
