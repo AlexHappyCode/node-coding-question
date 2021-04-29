@@ -46,6 +46,31 @@ module.exports = {
           model: 'accounts',
           key: 'id'
         }
+      },
+      text: {
+        type: Sequelize.STRING,
+        allowNull: true
+      }
+    });
+    
+    await queryInterface.createTable('photos', {
+      id: {
+        autoIncrement: true,
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        primaryKey: true
+      },
+      postId: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model: 'posts',
+          key: 'id'
+        }
+      },
+      path: {
+        type: Sequelize.STRING,
+        allowNull: false
       }
     });
   },
@@ -58,5 +83,6 @@ module.exports = {
      */
     await queryInterface.dropTable('posts');
     await queryInterface.dropTable('accounts');
+    await queryInterface.dropTable('photos');
   }
 };
