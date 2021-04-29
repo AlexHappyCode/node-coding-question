@@ -19,6 +19,9 @@ exports.insertAccount = async data => {
 exports.getHashedPassword = async email => {
   sql = 'SELECT password FROM accounts\
   WHERE email = $1';
-  let { password } = await db.one(sql, email);
-  return password;
+  let  result  = await db.one(sql, email)
+  .catch(e => {
+    console.log('error', e);
+  });
+  return result;
 }
