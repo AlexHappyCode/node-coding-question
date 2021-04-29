@@ -10,8 +10,12 @@ let express = require('express');
 let path = require('path');
 let cookieParser = require('cookie-parser');
 let logger = require('morgan');
+
+/* routers */
 let indexRouter = require('./routes/index');
 let registrationRouter = require('./routes/registration');
+let loginRouter = require('./routes/login');
+
 let app = express();
 
 // view engine setup
@@ -24,8 +28,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+/* Middleware */
 app.use('/', indexRouter);
 app.use('/registration', registrationRouter);
+app.use('/login', loginRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
