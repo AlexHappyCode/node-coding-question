@@ -1,6 +1,6 @@
-var express = require('express');
-var router = express.Router();
-const bcrypt = require('bcrypt');
+var express   = require('express');
+var router    = express.Router();
+const bcrypt  = require('bcrypt');
 const account = require('../db/account');
 
   /* POST: Login */
@@ -13,8 +13,18 @@ router.post('/', async (req, res, next) => {
       msg: 'error password undefined, likely user does not exist.' });
   }
   let { password: hashedPW } = result;
+  console.log(hashedPW);
+  console.log('password', password);
 
-  return res.status(200).json({ msg: 'testing login' });
+  bcrypt.compare(password, hashedPW, (err, result) => {
+    if (result) {
+      console.log(result);
+      return res.status(200).json({ msg: 'successful login' });
+    } else {
+      console.log(err);
+      return res.status(401).json({ msg: 'incorrect password' });
+    }
+  });
 });
 
 module.exports = router;
