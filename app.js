@@ -5,16 +5,16 @@ if (process.env.NODE_ENV === 'development') {
   require('dotenv').config();
 }
 
-let createError = require('http-errors');
-let express = require('express');
-let path = require('path');
+let createError  = require('http-errors');
+let express      = require('express');
+let path         = require('path');
 let cookieParser = require('cookie-parser');
-let logger = require('morgan');
+let logger       = require('morgan');
 
 /* routers */
-let indexRouter = require('./routes/index');
+let indexRouter        = require('./routes/index');
 let registrationRouter = require('./routes/registration');
-let loginRouter = require('./routes/login');
+let loginRouter        = require('./routes/login');
 
 let app = express();
 

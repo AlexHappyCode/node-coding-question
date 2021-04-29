@@ -1,3 +1,5 @@
+/* File: db/account.js */
+
 db = require('../config/pg-promise');
 
 exports.insertAccount = async data => {
@@ -13,9 +15,10 @@ exports.insertAccount = async data => {
   return error;
 }
 
-// TODO
+/* password -> String */
 exports.getHashedPassword = async email => {
-  sql = 'SELECT password FROM account\
+  sql = 'SELECT password FROM accounts\
   WHERE email = $1';
-  db.one(sql, email);
+  let { password } = await db.one(sql, email);
+  return password;
 }
