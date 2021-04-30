@@ -14,8 +14,9 @@ one for logging in and one for creating a post.
 
 POST: '/login'
 
+This endpoint accepts a JSON object with two fields: email and password.
+
 ![loggingIn](./readmeImages/loggingInAPI.jpg)
-<br>
 *This is the cookie that contains the JWT you are given.*
 ![cookie](./readmeImages/logginInAPIWithCookie.jpg)
 ### **Creating a post:** 
