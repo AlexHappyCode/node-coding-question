@@ -15,9 +15,11 @@ router.post('/', async (req, res, next) => {
   }
   let { password: hashedPW } = result;
 
-  bcrypt.compare(password, hashedPW, (err, isCorrect) => {
+  bcrypt.compare(password, hashedPW, async (err, isCorrect) => {
     if (isCorrect) {
-      createJWT(res, email);
+      let result = await account.getAccountId(email);
+      let { id: accountId } = result;
+      createJWT(res, accountId);
     } else {
       return res.status(401).json({ msg: 'incorrect password' });
     }
@@ -25,13 +27,9 @@ router.post('/', async (req, res, next) => {
 });
 
 /* Helper function for login */
-function createJWT(res, email) {
-  const accessToken = JWT.sign(email, process.env.ACCESS_TOKEN_SECRET);
+function createJWT(res, accountId) {
+  const accessToken = JWT.sign(accountId, process.env.ACCESS_TOKEN_SECRET);
   res.status(200).json({ accessToken: accessToken });
-}
-
-function authenticateToken(req, res, next) {
-
 }
 
 module.exports = router;

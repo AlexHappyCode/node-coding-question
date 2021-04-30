@@ -2,6 +2,7 @@
 
 db = require('../config/pg-promise');
 
+/* [name, email, password] -> null */
 exports.insertAccount = async data => {
   let error = null;
 
@@ -20,8 +21,20 @@ exports.getHashedPassword = async email => {
   sql = 'SELECT password FROM accounts\
   WHERE email = $1';
   let  result  = await db.one(sql, email)
-  .catch(e => {
-    console.log('error', e);
-  });
+    .catch(e => {
+      console.log('error', e);
+    });
+  return result;
+}
+
+/* email -> accountId */
+exports.getAccountId = async email => {
+  sql = 'SELECT id FROM accounts\
+    WHERE email = $1';
+
+  let result = await db.one(sql, email)
+    .catch(e => {
+      console.log('error', e);
+    });
   return result;
 }
