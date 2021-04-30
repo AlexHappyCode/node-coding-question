@@ -2,7 +2,11 @@
 
 # Requirement 1 README
 *note*: UI is incomplete, I am focusing on the backend now to 
-finish the requirements.
+finish the requirements. I used Postman to test the endpoints. 
+The following lists the endpoints I defined along with a screenshot
+of the postman configuration I used. Inside postman you can set the body 
+of data I sent along with the path to the endpoint. There are two endpoints, 
+one for logging in and one for creating a post.
 
 ## Endpoints
 
@@ -13,9 +17,10 @@ POST: '/login'
 ![loggingIn](./readmeImages/loggingInAPI.jpg)
 <br>
 *This is the cookie that contains the JWT you are given.*
-![createPost](./readmeImages/logginInAPIWithCookie.jpg)
+![cookie](./readmeImages/logginInAPIWithCookie.jpg)
 ### **Creating a post:** 
 POST: '/post/createPost'
+![cookie](./readmeImages/createPost.jpg)
 
 
 
