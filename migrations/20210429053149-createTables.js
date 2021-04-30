@@ -39,7 +39,7 @@ module.exports = {
         allowNull: false,
         primaryKey: true
       },
-      accountId: {
+      account_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
@@ -60,7 +60,7 @@ module.exports = {
         allowNull: false,
         primaryKey: true
       },
-      postId: {
+      post_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
@@ -81,8 +81,8 @@ module.exports = {
      * Example:
      * await queryInterface.dropTable('users');
      */
+    await queryInterface.dropTable('photos');
     await queryInterface.dropTable('posts');
     await queryInterface.dropTable('accounts');
-    await queryInterface.dropTable('photos');
   }
 };
