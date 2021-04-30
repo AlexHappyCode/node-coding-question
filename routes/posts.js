@@ -8,14 +8,20 @@ const posts   = require('../db/posts');
 
 router.post('/createPost', async (req, res) => {
   let data = [req.body.accountId, req.body.text];
-  let { image: photo }  = req.files;
+  let photo;
 
-  if (photo) {
-    // puts photo in photo folder
-    photo.mv('./photos/' + photo.name);
-  }
+  // if user uploaded photo, grab it here
+  if (req.files && req.files.image) {
+    let { image }  = req.files;
+    photo = true;
+    // uploads photo in photo folder
+    let path = './photos/' + image.name;
+    image.mv(path);
+    data.push(path);
+  } 
 
-  posts.createPost(data);
+  // if photo exists then createPostWithPhoto
+  photo ? posts.createPostWithPhoto(data) : posts.createPost(data);
   res.status(200).json({ msg: 'created a post' });
 });
 

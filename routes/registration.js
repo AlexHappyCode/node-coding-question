@@ -22,7 +22,7 @@ router.post('/', async (req, res, next) => {
   if (error) {
     return res.status(500).json({ msg: 'Error, email probably exists' });
   }
-  res.status(200).json({ msg: 'creating an account' });
+  res.status(200).json({ msg: 'created an account' });
 });
 
 module.exports = router;

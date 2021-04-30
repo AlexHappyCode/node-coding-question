@@ -5,10 +5,17 @@
 finish the requirements. I used Postman to test the endpoints. 
 The following lists the endpoints I defined along with a screenshot
 of the postman configuration I used. Inside postman you can set the body 
-of data I sent along with the path to the endpoint. There are two endpoints, 
-one for logging in and one for creating a post.
+of data I sent along with the path to the endpoint. There are three endpoints, 
+one for registering; one for logging in; and one for creating a post.
 
 ## Endpoints
+
+### **Registering:** 
+
+POST: '/register'
+
+This endpoint accepts a JSON object with three fields: 
+name, email, and password.
 
 ### **Logging In:** 
 
@@ -19,10 +26,12 @@ This endpoint accepts a JSON object with two fields: email and password.
 ![loggingIn](./readmeImages/loggingInAPI.jpg)
 *This is the cookie that contains the JWT you are given.*
 ![cookie](./readmeImages/logginInAPIWithCookie.jpg)
+
 ### **Creating a post:** 
 POST: '/post/createPost'
 ![cookie](./readmeImages/createPost.jpg)
-
+ 
+*note:* A post does not have to have a photo.
 
 
 
