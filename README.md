@@ -52,6 +52,9 @@ one for registering; one for logging in; and one for creating a post.
 
 GET: '/posts/timeDifference'
 
+Response comes back as an object with a message and an age object 
+that contains the age of the post (now() - posts.created\_at).
+
 ![loggingIn](./readmeImages/postAge.jpg)
 
 ### **Registering:** 
