@@ -48,7 +48,7 @@ of the postman configuration I used. Inside postman you can set the body
 of data I sent along with the path to the endpoint. There are three endpoints, 
 one for registering; one for logging in; and one for creating a post.
 
-### **Age of post** 
+### **Age of post:**
 
 GET: '/posts/timeDifference'
 
