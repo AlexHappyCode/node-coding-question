@@ -23,7 +23,7 @@ exports.timeDifference = async postId => {
 
   let { created_at: timestampPost } = await db.one(getPostCreatedAt, postId);
 
-  let sql = 'SELECT EXTRACT(epoch FROM now() - $1)';
-  let timeDifference = await db.one(sql, timestampPost);
-  console.log(timeDifference);
+  let sql = 'SELECT age(now(), $1)';
+  let { age } = await db.one(sql, timestampPost);
+  return age;
 }

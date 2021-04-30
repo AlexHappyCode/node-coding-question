@@ -35,8 +35,11 @@ router.post('/createPost', async (req, res) => {
  * postId -> timestamp */
 router.get('/timeDifference', async (req, res) => {
   let { postId } = req.body;
-  posts.timeDifference(postId);
-  res.status(200).json({ msg: 'got time difference' });
+  let postAge = await posts.timeDifference(postId);
+  res.status(200).json({ 
+    msg: 'Here is the age of the post',
+    age: postAge 
+  });
 });
 
 /* Helper function parses time and returns the format

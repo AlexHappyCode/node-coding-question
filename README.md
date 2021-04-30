@@ -41,11 +41,18 @@ to remove all the tables in the database:
 
 ## Endpoints
 
+
 I used Postman to test the endpoints. 
 The following lists the endpoints I defined along with a screenshot
 of the postman configuration I used. Inside postman you can set the body 
 of data I sent along with the path to the endpoint. There are three endpoints, 
 one for registering; one for logging in; and one for creating a post.
+
+### **Age of post** 
+
+GET: '/posts/timeDifference'
+
+![loggingIn](./readmeImages/postAge.jpg)
 
 ### **Registering:** 
 
@@ -75,7 +82,8 @@ that there exists an account with that email.
 ![cookie](./readmeImages/logginInAPIWithCookie.jpg)
 
 ### **Creating a post:** 
-POST: '/post/createPost'
+POST: '/posts/createPost'
+
 ![cookie](./readmeImages/createPost.jpg)
  
 *note:* A post does not have to have a photo.
