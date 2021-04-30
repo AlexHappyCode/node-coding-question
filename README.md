@@ -28,9 +28,9 @@ To create the database simply run the migrations.
 
 `npx sequelize db:migrate`
 
-to delete the database:
+to remove all the tables in the database:
 
-`npx sequelize db:migrate:undo`
+`npx sequelize db:migrate:undo:all`
 
 ![loggingIn](./readmeImages/databaseReq1.jpg)
 
