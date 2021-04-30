@@ -8,7 +8,7 @@ const posts   = require('../db/posts');
 
 /* TODO handle photos */
 router.post('/createPost', async (req, res) => {
-  let data = [parseInt(req.body.accountId), req.body.text];
+  let data = [req.body.accountId, req.body.text];
   posts.createPost(data);
   res.status(200).json({ msg: 'created a post' });
 });
