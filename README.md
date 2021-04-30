@@ -1,6 +1,6 @@
 # node-coding-question
 
-# Requirement 1 README
+# Requirement 2 README
 *note*: UI is incomplete, I am focusing on the backend now to 
 finish the requirements. These are three sections I added to 
 the readme. Following this are the original requirements.
@@ -23,7 +23,11 @@ To start the server in development mode run:
 
 ## Database:
 
-This is what the database looks like for requirement 1.
+To handle the requirement for a user to have multiple photos, 
+I removed the photo attribute from the posts table and instead 
+created a new table called photos which will have a FK to the post
+which will allow a post to have more than one photo (max of 5).
+
 To create the database simply run the migrations.
 
 `npx sequelize db:migrate`
