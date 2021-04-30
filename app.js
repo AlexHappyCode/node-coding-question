@@ -38,7 +38,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 /* Middleware */
 app.use('/', indexRouter);
-app.use('/registration', registrationRouter);
+app.use('/register', registrationRouter);
 app.use('/login', loginRouter);
 app.use(authenticateCookieToken);
 app.use('/posts', postsRouter);

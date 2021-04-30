@@ -8,6 +8,20 @@ of the postman configuration I used. Inside postman you can set the body
 of data I sent along with the path to the endpoint. There are three endpoints, 
 one for registering; one for logging in; and one for creating a post.
 
+## Database:
+
+This is what the database looks like for requirement 1.
+To create the database simply run the migrations.
+
+`npx sequelize db:migrate`
+
+to delete the database:
+
+`npx sequelize db:migrate:undo`
+
+![loggingIn](./readmeImages/databaseReq1.jpg)
+
+
 ## Endpoints
 
 ### **Registering:** 
@@ -16,6 +30,12 @@ POST: '/register'
 
 This endpoint accepts a JSON object with three fields: 
 name, email, and password.
+
+![loggingIn](./readmeImages/register.jpg)
+
+if the email is taken then it sends an http error 500.
+
+![loggingIn](./readmeImages/registerEmailExists.jpg)
 
 ### **Logging In:** 
 
