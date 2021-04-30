@@ -10,6 +10,7 @@ let express      = require('express');
 let path         = require('path');
 let cookieParser = require('cookie-parser');
 let logger       = require('morgan');
+let fileUpload   = require('express-fileupload');
 let { authenticateCookieToken } = require('./auth');
 
 /* routers */
@@ -23,6 +24,11 @@ let app = express();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
+
+// enable files upload
+app.use(fileUpload({
+    createParentPath: true
+}));
 
 app.use(logger('dev'));
 app.use(express.json());

@@ -52,27 +52,6 @@ module.exports = {
         allowNull: true
       }
     });
-    
-    await queryInterface.createTable('photos', {
-      id: {
-        autoIncrement: true,
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        primaryKey: true
-      },
-      post_id: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        references: {
-          model: 'posts',
-          key: 'id'
-        }
-      },
-      path: {
-        type: Sequelize.STRING,
-        allowNull: false
-      }
-    });
   },
   down: async (queryInterface, Sequelize) => {
     /**
