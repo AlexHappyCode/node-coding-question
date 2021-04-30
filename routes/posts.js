@@ -14,7 +14,8 @@ router.post('/createPost', async (req, res) => {
 });
 
 router.post('/uploadPhoto', async (req ,res) => {
-  //let data.req.body
+  console.log('uploadedPhoto');
+  res.send();
 });
 
 module.exports = router;

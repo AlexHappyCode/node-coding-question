@@ -25,7 +25,6 @@ exports.authenticateCookieToken = (req, res, next) => {
   JWT.verify(accessToken, process.env.ACCESS_TOKEN_SECRET, (err, accountId) => {
     if (err) return res.status(403).json({ msg: 'invalid token' });
     else {
-      console.log('in authentication');
       req.accountId = accountId;
       next();
     }
