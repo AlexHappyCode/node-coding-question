@@ -1,5 +1,25 @@
 # node-coding-question
 
+# Requirement 1 README
+*note*: UI is incomplete, I am focusing on the backend now to 
+finish the requirements.
+
+## Endpoints
+
+### **Logging In:** 
+
+POST: '/login'
+
+![loggingIn](./readmeImages/loggingInAPI.jpg)
+<br>
+*This is the cookie that contains the JWT you are given.*
+![createPost](./readmeImages/logginInAPIWithCookie.jpg)
+### **Creating a post:** 
+POST: '/post/createPost'
+
+
+
+
 ## Technologies to use for this coding question(Required):
 * Node.js
 * Express.js
