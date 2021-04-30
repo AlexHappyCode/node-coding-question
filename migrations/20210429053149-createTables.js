@@ -50,12 +50,30 @@ module.exports = {
       text: {
         type: Sequelize.STRING,
         allowNull: true
+      }
+    });
+
+    await queryInterface.createTable('photos', {
+      id: {
+        autoIncrement: true,
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        primaryKey: true
       },
-      photo: {
+      post_id: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model: 'posts',
+          key: 'id'
+        }
+      },
+      path: {
         type: Sequelize.STRING,
         allowNull: true
       }
     });
+
   },
   down: async (queryInterface, Sequelize) => {
     /**
@@ -64,6 +82,7 @@ module.exports = {
      * Example:
      * await queryInterface.dropTable('users');
      */
+    await queryInterface.dropTable('photos');
     await queryInterface.dropTable('posts');
     await queryInterface.dropTable('accounts');
   }
