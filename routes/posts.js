@@ -11,6 +11,8 @@ router.post('/createPost', async (req, res) => {
   let photo;
 
   // if user uploaded photo, grab it here
+  // TODO handle multiple photos
+  /*
   if (req.files && req.files.image) {
     let { image }  = req.files;
     photo = true;
@@ -19,10 +21,29 @@ router.post('/createPost', async (req, res) => {
     image.mv(path);
     data.push(path);
   } 
+  */
+
+  //timestamp has to have the format
+  // '1999-01-08 04:05:06'
 
   // if photo exists then createPostWithPhoto
-  photo ? posts.createPostWithPhoto(data) : posts.createPost(data);
+  posts.createPost(data);
   res.status(200).json({ msg: 'created a post' });
 });
+
+/* Endpoint that returns the currentTime - dateCreated 
+ * postId -> timestamp */
+router.get('/timeDifference', async (req, res) => {
+  let { postId } = req.body;
+  posts.timeDifference(postId);
+  res.status(200).json({ msg: 'got time difference' });
+});
+
+/* Helper function parses time and returns the format
+required for postgres */
+function parseTimestamp(time) {
+}
+
+
 
 module.exports = router;
