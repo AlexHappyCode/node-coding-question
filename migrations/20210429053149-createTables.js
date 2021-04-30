@@ -50,6 +50,10 @@ module.exports = {
       text: {
         type: Sequelize.STRING,
         allowNull: true
+      },
+      photo: {
+        type: Sequelize.String,
+        allowNull: true
       }
     });
   },
@@ -60,7 +64,6 @@ module.exports = {
      * Example:
      * await queryInterface.dropTable('users');
      */
-    await queryInterface.dropTable('photos');
     await queryInterface.dropTable('posts');
     await queryInterface.dropTable('accounts');
   }
