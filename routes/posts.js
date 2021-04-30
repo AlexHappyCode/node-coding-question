@@ -13,4 +13,8 @@ router.post('/createPost', async (req, res) => {
   res.status(200).json({ msg: 'created a post' });
 });
 
+router.post('/uploadPhoto', async (req ,res) => {
+  //let data.req.body
+});
+
 module.exports = router;

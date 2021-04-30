@@ -26,9 +26,12 @@ router.post('/', async (req, res, next) => {
   });
 });
 
-/* Helper function for login */
+/* Helper function for login 
+  creats JWT and sets cookie */
 function createJWT(res, accountId) {
   const accessToken = JWT.sign(accountId, process.env.ACCESS_TOKEN_SECRET);
+  res.cookie('accessToken', accessToken, { httpOnly: true });
+
   res.status(200).json({ accessToken: accessToken });
 }
 
