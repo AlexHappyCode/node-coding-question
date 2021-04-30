@@ -52,7 +52,7 @@ module.exports = {
         allowNull: true
       },
       photo: {
-        type: Sequelize.String,
+        type: Sequelize.STRING,
         allowNull: true
       }
     });
