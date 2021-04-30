@@ -10,7 +10,7 @@ let express      = require('express');
 let path         = require('path');
 let cookieParser = require('cookie-parser');
 let logger       = require('morgan');
-let { authenticateToken } = require('./auth');
+let { authenticateCookieToken } = require('./auth');
 
 /* routers */
 let indexRouter        = require('./routes/index');
@@ -34,7 +34,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/registration', registrationRouter);
 app.use('/login', loginRouter);
-app.use(authenticateToken);
+app.use(authenticateCookieToken);
 app.use('/posts', postsRouter);
 
 // catch 404 and forward to error handler

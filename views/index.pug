@@ -4,9 +4,12 @@ block content
   h1 Welcome
   p Welcome to #{title}
   
-  //div(class="container jumbotron text-center")
-  button(type='button', class='btn btn-primary', data-toggle='modal',
-    data-target='#loginModal') Login
+  if loggedIn
+    button(type='button', class='btn btn-primary') Logout
+  else
+    button(type='button', class='btn btn-primary', data-toggle='modal',
+      data-target='#loginModal') Login
+
 
   div(class='modal fade', id='loginModal', role='dialog')
     div(class='modal-dialog')

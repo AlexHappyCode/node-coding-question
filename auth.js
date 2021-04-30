@@ -1,5 +1,6 @@
-const JWT     = require('jsonwebtoken');
+const JWT = require('jsonwebtoken');
 
+/* this authentication uses authorization header and bearer token */
 exports.authenticateToken = (req, res, next) => {
   const authHeader = req.header('authorization');
   let token = authHeader && authHeader.split(' ')[1];
@@ -13,4 +14,20 @@ exports.authenticateToken = (req, res, next) => {
       }
     });
   }
+}
+
+/* this authentication uses cookies */
+exports.authenticateCookieToken = (req, res, next) => {
+  let { accessToken } = req.cookies;
+
+  if (!accessToken) return res.status(401).json({ msg: 'no auth token' });
+
+  JWT.verify(accessToken, process.env.ACCESS_TOKEN_SECRET, (err, accountId) => {
+    if (err) return res.status(403).json({ msg: 'invalid token' });
+    else {
+      console.log('in authentication');
+      req.accountId = accountId;
+      next();
+    }
+  });
 }

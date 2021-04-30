@@ -20,6 +20,10 @@ router.post('/', async (req, res, next) => {
       let result = await account.getAccountId(email);
       let { id: accountId } = result;
       createJWT(res, accountId);
+      res.render('index', { 
+        title: 'my coding submission!',
+        LoggedIn: true
+      });
     } else {
       return res.status(401).json({ msg: 'incorrect password' });
     }
@@ -32,7 +36,8 @@ function createJWT(res, accountId) {
   const accessToken = JWT.sign(accountId, process.env.ACCESS_TOKEN_SECRET);
   res.cookie('accessToken', accessToken, { httpOnly: true });
 
-  res.status(200).json({ accessToken: accessToken });
+    /* we are using cookies instead auth header for now */
+  //res.status(200).json({ accessToken: accessToken });
 }
 
 module.exports = router;
