@@ -8,23 +8,27 @@ const posts   = require('../db/posts');
 
 router.post('/createPost', async (req, res) => {
   let data = [req.body.accountId, req.body.text];
-  let photo;
+  let { id: postId } = await posts.createPost(data);
 
   // if user uploaded photo, grab it here
   if (req.files) {
-    let { image }  = req.files;
-    photo = true;
-    // uploads photo in photo folder
-    let path = './photos/' + image.name;
-    image.mv(path);
-    data.push(path);
+    //console.log(req.files);
+
+    let i = 0;
+    for (let image in req.files) {
+      if ( i == 5) break;
+
+      // TODO validate image here
+      console.log(image);
+
+      let path = './photos/' + image.name;
+      //image.mv(path);
+      //posts.insertPhoto([postId, path]);
+      i += 1
+    }
   } 
 
-  //timestamp has to have the format
-  // '1999-01-08 04:05:06'
-
-  // if photo exists then createPostWithPhoto
-  posts.createPost(data);
+    // if photo exists then createPostWithPhoto
   res.status(200).json({ msg: 'created a post' });
 });
 
