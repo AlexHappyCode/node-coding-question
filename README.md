@@ -64,6 +64,16 @@ corresponds to the postId with the given text input.
 
 ![setPostText](./readmeImages/setPostText.jpg)
 
+### **Delete photo:**
+
+This not only deletes the photo from the database but also delete 
+the photo from the filesystem where the photos are being stored inside 
+the photos folder.
+
+DELETE : '/posts/deletePhoto'
+
+![setPostText](./readmeImages/deletePhoto.jpg)
+
 ### **Age of post:**
 
 GET: '/posts/timeDifference'
