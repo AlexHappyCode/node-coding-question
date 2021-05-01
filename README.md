@@ -16,6 +16,9 @@ handling and testing when user inputs bad data.
 
 AWS HOST: http://nodecodingchallengechukaikokwu-env.eba-3kcatndv.us-west-1.elasticbeanstalk.com/
 
+*note*: UI is incomplete, I am focused on the backend now to 
+finish the requirements. 
+
 *note: aws instance is not connected to a database or S3*
 
 ## Req 3 requires the following new features:
@@ -23,9 +26,8 @@ AWS HOST: http://nodecodingchallengechukaikokwu-env.eba-3kcatndv.us-west-1.elast
 2. Need to add pagination in the post and in the comments of the post.
 3. User have the option to create their username. Update the user model.
 
-*note*: UI is incomplete, I am focusing on the backend now to 
-finish the requirements. These are the three main sections in 
-the readme. Following this are the original requirements.
+These are the three main sections in the readme. 
+Following this are the original requirements.
 
 1. Starting the server
 2. database structure
