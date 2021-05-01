@@ -1,5 +1,5 @@
 /* File: router/posts.js
-   Purpose: posts router file */
+   Purpose: router file for working with posts */
 
 const express = require('express');
 const router  = express.Router();
@@ -42,6 +42,13 @@ router.put('/setText', (req, res) => {
   let data = [text, postId];
   posts.setText(data);
   res.status(200).json({ msg: 'set the post text' });
+});
+
+router.delete('/deletePost', (req, res) => {
+  let { postId } = req.body;
+
+  posts.deletePost(postId);
+  res.status(200).json({ msg: 'deleted the post' });
 });
 
 /* delete photo */

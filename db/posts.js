@@ -21,6 +21,14 @@ exports.setText = data => {
   db.none(sql, data);
 }
 
+/* delete a post (along with photos) */
+exports.deletePost = postId => {
+  sql = 'DELETE FROM posts\
+    WHERE id = $1';
+
+  db.none(sql, postId);
+}
+
 /* insert photo */
 exports.insertPhoto = async postsId => {
   sql = 'INSERT INTO photos(post_id)\
