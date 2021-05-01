@@ -9,7 +9,7 @@
 3. User have the option to create their username. Update the user model.
 
 *note*: UI is incomplete, I am focusing on the backend now to 
-finish the requirements. These are three sections I added to 
+finish the requirements. These are the three main sections in 
 the readme. Following this are the original requirements.
 
 1. Starting the server
