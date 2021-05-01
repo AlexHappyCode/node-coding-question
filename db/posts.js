@@ -22,11 +22,18 @@ exports.setText = data => {
 }
 
 /* delete a post (along with photos) */
-exports.deletePost = postId => {
+exports.deletePost = async postId => {
+  // first delete all associated photos
+
+  sql = 'DELETE FROM photos\
+    WHERE post_id = $1';
+
+  await db.none(sql, postId);
+
   sql = 'DELETE FROM posts\
     WHERE id = $1';
 
-  db.none(sql, postId);
+  await db.none(sql, postId);
 }
 
 /* insert photo */

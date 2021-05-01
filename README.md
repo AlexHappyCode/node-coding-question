@@ -47,12 +47,25 @@ The following lists the endpoints I defined along with a screenshot
 of the postman configuration I used. Inside postman you can set the body 
 of data I sent along with the path to the endpoint. 
 
-*** New endpoints in Requirement 2 are the following ***
+***New endpoints in Requirement 2 are the following:***
 
-1. PUT    : '/posts/setText'
-2. GET    : '/posts/timeDifference'
+1. GET    : '/posts/timeDifference'
+2. PUT    : '/posts/setText'
 3. DELETE : '/posts/deletePhoto'
 4. DELETE : '/posts/deletePost'
+
+***Also updated the createPost to allow for creating a post with 
+multiple photos***
+
+### **Age of post:**
+
+GET: '/posts/timeDifference'
+
+Response comes back as an object with a message and an age object 
+that contains the age of the post (now() - posts.created\_at).
+
+![loggingIn](./readmeImages/postAge.jpg)
+
 
 ### **Edit post Text :**
 
@@ -74,14 +87,14 @@ DELETE : '/posts/deletePhoto'
 
 ![setPostText](./readmeImages/deletePhoto.jpg)
 
-### **Age of post:**
+### **Delete Post:**
 
-GET: '/posts/timeDifference'
+This first deletes all the photos associated with the post as to not 
+violate a foreign key constraint, then deletes the post itself.
 
-Response comes back as an object with a message and an age object 
-that contains the age of the post (now() - posts.created\_at).
+DELETE : '/posts/deletePost'
 
-![loggingIn](./readmeImages/postAge.jpg)
+![setPostText](./readmeImages/deletePost.jpg)
 
 ### **Registering:** 
 
