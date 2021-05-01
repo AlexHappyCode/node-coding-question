@@ -36,7 +36,7 @@ to remove all the tables in the database:
 
 `npx sequelize db:migrate:undo:all`
 
-![loggingIn](./readmeImages/databaseReq2.jpg)
+![databaseStructure](./readmeImages/databaseReq2.jpg)
 
 
 ## Endpoints
@@ -45,8 +45,24 @@ to remove all the tables in the database:
 I used Postman to test the endpoints. 
 The following lists the endpoints I defined along with a screenshot
 of the postman configuration I used. Inside postman you can set the body 
-of data I sent along with the path to the endpoint. There are three endpoints, 
-one for registering; one for logging in; and one for creating a post.
+of data I sent along with the path to the endpoint. 
+
+*** New endpoints in Requirement 2 are the following ***
+
+1. PUT    : '/posts/setText'
+2. GET    : '/posts/timeDifference'
+3. DELETE : '/posts/deletePhoto'
+4. DELETE : '/posts/deletePost'
+
+### **Edit post Text :**
+
+PUT: '/posts/setText'
+
+Accepts two json fields { postId, text } and sets the post that 
+corresponds to the postId with the given text input.
+
+
+![setPostText](./readmeImages/setPostText.jpg)
 
 ### **Age of post:**
 
@@ -89,8 +105,7 @@ POST: '/posts/createPost'
 
 ![cookie](./readmeImages/createPost.jpg)
  
-*note:* A post does not have to have a photo.
-
+*note:* A post does not have to have a photo and can have at most 5.
 
 
 ## Technologies to use for this coding question(Required):

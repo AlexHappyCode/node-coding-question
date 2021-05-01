@@ -1,6 +1,8 @@
 /* File: db/posts.js */
 
-db = require('../config/pg-promise');
+let db = require('../config/pg-promise');
+let fs = require('fs');
+
 
 /* creates a post */
 exports.createPost = async data => {
@@ -10,22 +12,47 @@ exports.createPost = async data => {
   return await db.one(sql, data);
 }
 
+/* edit post text */
+exports.setText = data => {
+  sql = 'UPDATE posts\
+    SET text = $1\
+    WHERE id = $2';
 
-// TODO handle same path (when names match)
-// we can insert the photo first to get the id then
-// update the path afterwards
+  db.none(sql, data);
+}
+
+/* insert photo */
 exports.insertPhoto = async postsId => {
   sql = 'INSERT INTO photos(post_id)\
     VALUES($1) RETURNING id';
   return await db.one(sql, postsId);
 }
 
+/* set path of photo */
 exports.setPhotoPath = async (postId, path) => {
   sql = 'UPDATE photos\
     SET path = $1\
     WHERE post_id = $2';
 
   db.none(sql, [path, postId]);
+}
+
+/* delete photo */
+exports.deletePhoto = async photoId => {
+  // first delete the photo in the filesystem
+  sql = 'SELECT path from photos\
+  WHERE id = $1';
+
+  let { path } = await db.one(sql, photoId);
+  console.log('path:', path);
+
+  fs.unlinkSync(path);
+
+  // then delete photo from database
+  sql = 'DELETE FROM photos\
+    WHERE id = $1';
+
+  db.none(sql, photoId);
 }
 
 /* get time difference */

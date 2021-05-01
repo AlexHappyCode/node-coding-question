@@ -10,19 +10,19 @@ router.post('/createPost', async (req, res) => {
   let data = [req.body.accountId, req.body.text];
   let { id: postId } = await posts.createPost(data);
 
-  // if user uploaded photo, grab it here
+  // if user uploaded photos, grab them here
   if (req.files) {
-    //console.log(req.files);
-
     let i = 0;
     for (let key in req.files) {
       if (i == 5) break;
       let file = req.files[key];
       
-      console.log(file);
+      //console.log(file);
       // Check if it is an image file
       if (file.mimetype.includes('image')) {
         let { id: photoId }= await posts.insertPhoto(postId);
+
+        console.log(photoId);
         
         let path = './photos/' + photoId + '_' + file.name ;
         posts.setPhotoPath(postId, path);
@@ -34,10 +34,24 @@ router.post('/createPost', async (req, res) => {
       i += 1
     }
   } 
-
-    // if photo exists then createPostWithPhoto
   res.status(200).json({ msg: 'created a post' });
 });
+
+/* edit text of post */
+router.put('/setText', (req, res) => {
+  let { postId, text } = req.body;
+  let data = [text, postId];
+  posts.setText(data);
+  res.status(200).json({ msg: 'set the post text' });
+});
+
+/* delete photo */
+router.delete('/deletePhoto', (req, res) => {
+  let { photoId } = req.body;
+  posts.deletePhoto(photoId);
+  res.status(200).json({ msg: 'deleted photo' });
+});
+
 
 /* Endpoint that returns the currentTime - dateCreated 
  * postId -> timestamp */
@@ -50,10 +64,6 @@ router.get('/timeDifference', async (req, res) => {
   });
 });
 
-/* Helper function parses time and returns the format
-required for postgres */
-function parseTimestamp(time) {
-}
 
 
 
