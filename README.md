@@ -8,7 +8,7 @@ The following I was not able to figure out how to implement:
 
 1. Running the server on aws so that it is connected to the database and 
 using AWS S3.
-2. Need to add pagination in the post and in the comments of the post.
+2. Adding pagination in the post and in the comments of the post.
 
 
 # AWS
@@ -67,7 +67,6 @@ to remove all the tables in the database:
 
 
 ## Endpoints
-
 
 I used Postman to test the endpoints. 
 The following lists the endpoints I defined along with a screenshot
