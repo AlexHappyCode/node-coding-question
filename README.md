@@ -117,6 +117,11 @@ POST: '/posts/createPost'
  
 *note:* A post does not have to have a photo and can have at most 5.
 
+Here you can send in up to five images as key value pairs. 
+As long as the image data being sent has a mimetype of image 
+the server should be able to add that file to the database as well 
+as store it in the photos folder.
+
 
 ## Technologies to use for this coding question(Required):
 * Node.js
