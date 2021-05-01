@@ -43,7 +43,7 @@ to remove all the tables in the database:
 
 `npx sequelize db:migrate:undo:all`
 
-![databaseStructure](./readmeImages/databaseReq2.jpg)
+![databaseStructure](./readmeImages/databaseReq3.jpg)
 
 
 ## Endpoints
