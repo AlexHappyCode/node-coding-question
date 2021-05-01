@@ -10,7 +10,6 @@ const posts   = require('../db/posts');
 router.get('/getPosts', async (req, res) => {
   let { limit, offset } = req.body;
   let result = await posts.getPosts(limit, offset);
-  console.log(result);
   res.status(200).json({ 
     msg: 'Got the posts',
     posts: result
@@ -21,7 +20,6 @@ router.get('/getPosts', async (req, res) => {
 router.get('/getComments', async (req, res) => {
   let { limit, offset, postId } = req.body;
   let result = await posts.getComments(limit, offset, postId);
-  console.log(result);
   res.status(200).json({ 
     msg: 'Got the comments',
     posts: result
