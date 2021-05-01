@@ -1,7 +1,7 @@
 # node-coding-question
 
 
-# Requirement 3 README
+# Requirement 3 - *Requirement 3 is a work in progress*
 
 ## Req 3 requires the following new features:
 1. A post can have multiple comments. Comments will show the user who commented and the comment.
