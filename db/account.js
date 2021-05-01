@@ -38,3 +38,11 @@ exports.getAccountId = async email => {
     });
   return result;
 }
+
+exports.setUsername = async data => {
+  sql = 'UPDATE accounts\
+    SET username = $1\
+    WHERE id = $2';
+
+  db.none(sql, data);
+}

@@ -3,6 +3,13 @@
 let db = require('../config/pg-promise');
 let fs = require('fs');
 
+/* create a comment */
+exports.createComment = async data => {
+  sql = 'INSERT INTO comments(account_id, post_id, text, created_at)\
+    VALUES($1, $2, $3, now())';
+  db.none(sql, data);
+}
+
 
 /* creates a post */
 exports.createPost = async data => {

@@ -1,9 +1,21 @@
 # node-coding-question
 
+# Requirement 3 
 
-# Requirement 3 - *a work in progress*
+### Major Challenges
+
+The following I was not able to figure out how to implement:
+
+1. Running the server on aws so that it is connected to the database and 
+using AWS S3.
+2. Need to add pagination in the post and in the comments of the post.
+
+
+# AWS
 
 AWS HOST: http://nodecodingchallengechukaikokwu-env.eba-3kcatndv.us-west-1.elasticbeanstalk.com/
+
+*note: aws instance is not connected to a database or S3*
 
 ## Req 3 requires the following new features:
 1. A post can have multiple comments. Comments will show the user who commented and the comment.
@@ -62,15 +74,27 @@ The following lists the endpoints I defined along with a screenshot
 of the postman configuration I used. Inside postman you can set the body 
 of data I sent along with the path to the endpoint. 
 
-***New endpoints in Requirement 2 are the following:***
+***New endpoints in Requirement 3 are the following:***
 
-1. GET    : '/posts/timeDifference'
-2. PUT    : '/posts/setText'
-3. DELETE : '/posts/deletePhoto'
-4. DELETE : '/posts/deletePost'
+1. POST    : '/posts/createComment'
+2. PUT     : '/user/setUsername'
 
-***Also updated the createPost to allow for creating a post with 
-multiple photos***
+### **Set username**
+PUT     : '/user/setUsername'
+
+This endpoint allows a user to change their username on their account.
+
+![setUsername](./readmeImages/setUsername.jpg)
+
+
+### **Create a comment**
+
+POST    : '/posts/createComment'
+
+This endpoint creates a comment and attaches it to the post. 
+It requires the fields accountId, postId, and text in JSON.
+
+![createComment](./readmeImages/createComment.jpg)
 
 ### **Age of post:**
 

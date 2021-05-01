@@ -18,6 +18,7 @@ let indexRouter        = require('./routes/index');
 let registrationRouter = require('./routes/registration');
 let loginRouter        = require('./routes/login');
 let postsRouter        = require('./routes/posts');
+let userRouter         = require('./routes/user');
 
 let app = express();
 
@@ -42,6 +43,7 @@ app.use('/register', registrationRouter);
 app.use('/login', loginRouter);
 app.use(authenticateCookieToken);
 app.use('/posts', postsRouter);
+app.use('/user', userRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

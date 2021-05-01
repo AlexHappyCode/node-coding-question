@@ -6,6 +6,15 @@ const router  = express.Router();
 const JWT     = require('jsonwebtoken');
 const posts   = require('../db/posts');
 
+router.post('/createComment', async (req, res) => {
+  let { postId, text } = req.body;
+  let accountId = req.accountId;
+
+  await posts.createComment([accountId, postId, text]);
+  res.status(200).json({ msg: 'created a comment' });
+
+});
+
 router.post('/createPost', async (req, res) => {
   let data = [req.body.accountId, req.body.text];
   let { id: postId } = await posts.createPost(data);
@@ -17,8 +26,7 @@ router.post('/createPost', async (req, res) => {
       if (i == 5) break;
       let file = req.files[key];
       
-      //console.log(file);
-      // Check if it is an image file
+      // THis checks if it is an image file
       if (file.mimetype.includes('image')) {
         let { id: photoId }= await posts.insertPhoto(postId);
         let path = './photos/' + photoId + '_' + file.name ;

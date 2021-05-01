@@ -21,6 +21,10 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: true
       },
+      username: {
+        type: Sequelize.STRING,
+        allowNull: true
+      },
       email: {
         type: Sequelize.STRING,
         allowNull: true,
@@ -62,6 +66,14 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false,
         primaryKey: true
+      },
+      account_id: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model: 'accounts',
+          key: 'id'
+        }
       },
       post_id: {
         type: Sequelize.INTEGER,
@@ -111,6 +123,7 @@ module.exports = {
      * await queryInterface.dropTable('users');
      */
     await queryInterface.dropTable('photos');
+    await queryInterface.dropTable('comments');
     await queryInterface.dropTable('posts');
     await queryInterface.dropTable('accounts');
   }
