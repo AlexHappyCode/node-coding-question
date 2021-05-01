@@ -77,7 +77,7 @@ that there exists an account with that email.
 ![cookie](./readmeImages/logginInAPIWithCookie.jpg)
 
 ### **Creating a post:** 
-POST: '/post/createPost'
+POST: '/posts/createPost'
 ![cookie](./readmeImages/createPost.jpg)
  
 *note:* A post does not have to have a photo.
