@@ -4,12 +4,13 @@
 
 ### Major Challenges
 
-The following I was not able to figure out how to implement:
+The following I was not able to figure out or gave me challenges:
 
 1. Running the server on aws so that it is connected to the database and 
 using AWS S3.
-2. Adding pagination in the post and in the comments of the post.
-
+2. Adding more robust pagination.
+3. Handling all edge cases for some of the endpoints e.g. 
+handling and testing when user inputs bad data.
 
 # AWS
 
@@ -77,6 +78,27 @@ of data I sent along with the path to the endpoint.
 
 1. POST    : '/posts/createComment'
 2. PUT     : '/user/setUsername'
+*The following two are for the pagination requirement*
+3. GET     : '/posts/getPosts'
+4. GET     : '/posts/getComments'
+
+### **Get Posts**
+GET     : '/posts/getPosts'
+
+I am still learning pagination, but what I did was write an endpoint 
+that accepts a limit and an offset for a GET query on all the posts.
+This orders the posts by the date they were created.
+
+![setUsername](./readmeImages/getPosts.jpg)
+
+### **Get comments**
+GET     : '/posts/getComments'
+
+Here I did something similar to the getPosts endpoint. This endpoint
+also accepts a limit and an offset but also a postId. This endpoint 
+orders the comments by the date they were created.
+
+![setUsername](./readmeImages/getComments.jpg)
 
 ### **Set username**
 PUT     : '/user/setUsername'

@@ -6,6 +6,29 @@ const router  = express.Router();
 const JWT     = require('jsonwebtoken');
 const posts   = require('../db/posts');
 
+/* pagination for posts */
+router.get('/getPosts', async (req, res) => {
+  let { limit, offset } = req.body;
+  let result = await posts.getPosts(limit, offset);
+  console.log(result);
+  res.status(200).json({ 
+    msg: 'Got the posts',
+    posts: result
+  });
+});
+
+/* pagination for comments */
+router.get('/getComments', async (req, res) => {
+  let { limit, offset, postId } = req.body;
+  let result = await posts.getComments(limit, offset, postId);
+  console.log(result);
+  res.status(200).json({ 
+    msg: 'Got the comments',
+    posts: result
+  });
+
+});
+
 router.post('/createComment', async (req, res) => {
   let { postId, text } = req.body;
   let accountId = req.accountId;

@@ -3,6 +3,25 @@
 let db = require('../config/pg-promise');
 let fs = require('fs');
 
+/* gets posts with limit offset */
+exports.getPosts = async (limit, offset) => {
+  sql = 'SELECT * FROM posts\
+    ORDER BY created_at\
+    LIMIT $1 OFFSET $2';
+
+  return await db.any(sql, [limit, offset]);
+}
+
+/* gets comments with limit and offset*/
+exports.getComments = async (limit, offset, postId) => {
+  sql = 'SELECT * FROM comments\
+    WHERE post_id = $3\
+    ORDER BY created_at\
+    LIMIT $1 OFFSET $2';
+
+  return await db.any(sql, [limit, offset, postId]);
+}
+
 /* create a comment */
 exports.createComment = async data => {
   sql = 'INSERT INTO comments(account_id, post_id, text, created_at)\
