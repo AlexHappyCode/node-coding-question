@@ -57,6 +57,28 @@ module.exports = {
       }
     });
     await queryInterface.createTable('comments', {
+      id: {
+        autoIncrement: true,
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        primaryKey: true
+      },
+      post_id: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model: 'posts',
+          key: 'id'
+        }
+      },
+      text: {
+        type: Sequelize.STRING,
+        allowNull: true,
+      },
+      created_at: {
+        type: Sequelize.DATE,
+        allowNull: false
+      }
     });
 
     await queryInterface.createTable('photos', {
