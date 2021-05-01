@@ -21,11 +21,10 @@ router.post('/createPost', async (req, res) => {
       // Check if it is an image file
       if (file.mimetype.includes('image')) {
         let { id: photoId }= await posts.insertPhoto(postId);
-
-        console.log(photoId);
-        
         let path = './photos/' + photoId + '_' + file.name ;
-        posts.setPhotoPath(postId, path);
+        console.log(path);
+        console.log(photoId);
+        await posts.setPhotoPath(photoId, path);
         file.mv(path);
       } else {
         console.log('file is not an image');

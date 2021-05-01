@@ -25,16 +25,18 @@ exports.setText = data => {
 exports.insertPhoto = async postsId => {
   sql = 'INSERT INTO photos(post_id)\
     VALUES($1) RETURNING id';
+
   return await db.one(sql, postsId);
 }
 
 /* set path of photo */
-exports.setPhotoPath = async (postId, path) => {
+exports.setPhotoPath = async (photoId, path) => {
+  console.log('entering set photo');
   sql = 'UPDATE photos\
     SET path = $1\
-    WHERE post_id = $2';
+    WHERE id = $2';
 
-  db.none(sql, [path, postId]);
+  await db.none(sql, [path, photoId]);
 }
 
 /* delete photo */
