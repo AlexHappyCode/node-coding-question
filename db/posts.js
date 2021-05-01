@@ -9,12 +9,7 @@ exports.createPost = async data => {
   db.none(sql, data);
 }
 
-/*TODO DB changed by putting photos in photo table */
-exports.createPostWithPhoto = async data => {
-  sql = 'INSERT INTO posts(account_id, text, photo)\
-    VALUES($1, $2, $3)';
-  db.none(sql, data);
-}
+
 
 /* get time difference */
 exports.timeDifference = async postId => {

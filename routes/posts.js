@@ -11,9 +11,7 @@ router.post('/createPost', async (req, res) => {
   let photo;
 
   // if user uploaded photo, grab it here
-  // TODO handle multiple photos
-  /*
-  if (req.files && req.files.image) {
+  if (req.files) {
     let { image }  = req.files;
     photo = true;
     // uploads photo in photo folder
@@ -21,7 +19,6 @@ router.post('/createPost', async (req, res) => {
     image.mv(path);
     data.push(path);
   } 
-  */
 
   //timestamp has to have the format
   // '1999-01-08 04:05:06'
