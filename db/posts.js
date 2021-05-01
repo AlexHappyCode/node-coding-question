@@ -12,14 +12,21 @@ exports.createPost = async data => {
 
 
 // TODO handle same path (when names match)
-exports.insertPhoto = async data => {
-  sql = 'INSERT INTO photos(post_id, path)\
-    VALUES($1, $2)';
-  db.none(sql, data);
+// we can insert the photo first to get the id then
+// update the path afterwards
+exports.insertPhoto = async postsId => {
+  sql = 'INSERT INTO photos(post_id)\
+    VALUES($1) RETURNING id';
+  return await db.one(sql, postsId);
 }
 
+exports.setPhotoPath = async (postId, path) => {
+  sql = 'UPDATE photos\
+    SET path = $1\
+    WHERE post_id = $2';
 
-// TODO function that gets the path
+  db.none(sql, [path, postId]);
+}
 
 /* get time difference */
 exports.timeDifference = async postId => {

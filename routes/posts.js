@@ -15,15 +15,22 @@ router.post('/createPost', async (req, res) => {
     //console.log(req.files);
 
     let i = 0;
-    for (let image in req.files) {
-      if ( i == 5) break;
-
-      // TODO validate image here
-      console.log(image);
-
-      let path = './photos/' + image.name;
-      //image.mv(path);
-      //posts.insertPhoto([postId, path]);
+    for (let key in req.files) {
+      if (i == 5) break;
+      let file = req.files[key];
+      
+      console.log(file);
+      // Check if it is an image file
+      if (file.mimetype.includes('image')) {
+        let { id: photoId }= await posts.insertPhoto(postId);
+        
+        let path = './photos/' + photoId + '_' + file.name ;
+        posts.setPhotoPath(postId, path);
+        file.mv(path);
+      } else {
+        console.log('file is not an image');
+        continue;
+      }
       i += 1
     }
   } 
