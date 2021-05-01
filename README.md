@@ -22,6 +22,12 @@ and I will be happy to explain, or we can set up a zoom meeting.
 
 ## Starting the server:
 
+Starting the server requires certain environment variables to be set
+
+DATABASE\_URL=postgres://yourusername@localhost:5432/dbname
+
+ACCESS\_TOKEN\_SECRET=somethingHardToGuess
+
 To start the server run:
 `npm start`
 

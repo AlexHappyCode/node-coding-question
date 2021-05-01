@@ -56,6 +56,8 @@ module.exports = {
         allowNull: false
       }
     });
+    await queryInterface.createTable('comments', {
+    });
 
     await queryInterface.createTable('photos', {
       id: {
