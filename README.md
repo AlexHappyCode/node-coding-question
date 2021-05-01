@@ -3,6 +3,8 @@
 
 # Requirement 3 - *a work in progress*
 
+AWS HOST: http://nodecodingchallengechukaikokwu-env.eba-3kcatndv.us-west-1.elasticbeanstalk.com/
+
 ## Req 3 requires the following new features:
 1. A post can have multiple comments. Comments will show the user who commented and the comment.
 2. Need to add pagination in the post and in the comments of the post.
