@@ -1,6 +1,13 @@
 # node-coding-question
 
+
 # Requirement 3 README
+
+## Req 3 requires the following new features:
+1. A post can have multiple comments. Comments will show the user who commented and the comment.
+2. Need to add pagination in the post and in the comments of the post.
+3. User have the option to create their username. Update the user model.
+
 *note*: UI is incomplete, I am focusing on the backend now to 
 finish the requirements. These are three sections I added to 
 the readme. Following this are the original requirements.
