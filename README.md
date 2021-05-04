@@ -1,5 +1,89 @@
 # node-coding-question
 
+# Requirement 1 README
+*note*: UI is incomplete, I am focusing on the backend now to 
+finish the requirements. These are three sections I added to 
+the readme. Following this are the original requirements.
+
+1. Starting the server
+2. database structure
+3. endpoints.
+
+If you have specific questions about the 
+implementation. Please send me an email at arpenacoding@gmail.com,
+and I will be happy to explain, or we can set up a zoom meeting.
+
+## Starting the server:
+
+Starting the server requires certain environment variables to be set
+
+DATABASE\_URL=postgres://yourusername@localhost:5432/dbname
+
+ACCESS\_TOKEN\_SECRET=somethingHardToGuess
+
+To start the server run:
+`npm start`
+
+To start the server in development mode run:
+`npm run start:dev`
+
+## Database:
+
+This is what the database looks like for requirement 1.
+To create the database simply run the migrations.
+
+`npx sequelize db:migrate`
+
+to remove all the tables in the database:
+
+`npx sequelize db:migrate:undo:all`
+
+![loggingIn](./readmeImages/databaseReq1.jpg)
+
+
+## Endpoints
+
+I used Postman to test the endpoints. 
+The following lists the endpoints I defined along with a screenshot
+of the postman configuration I used. Inside postman you can set the body 
+of data I sent along with the path to the endpoint. There are three endpoints, 
+one for registering; one for logging in; and one for creating a post.
+
+### **Registering:** 
+
+POST: '/register'
+
+This endpoint accepts a JSON object with three fields: 
+name, email, and password. It hashes the password using bcrypt 
+and stores the hashed password in the database.
+
+![loggingIn](./readmeImages/register.jpg)
+
+if the email is taken then it sends an http error 500.
+
+![loggingIn](./readmeImages/registerEmailExists.jpg)
+
+### **Logging In:** 
+
+POST: '/login'
+
+This endpoint accepts a JSON object with two fields: email and password.
+I used bcrypt to hash the password the user is attempting to login with, 
+and then I compare that hash to the hash that is in the database, given 
+that there exists an account with that email.
+
+![loggingIn](./readmeImages/loggingInAPI.jpg)
+*This is the cookie that contains the JWT you are given.*
+![cookie](./readmeImages/logginInAPIWithCookie.jpg)
+
+### **Creating a post:** 
+POST: '/posts/createPost'
+![cookie](./readmeImages/createPost.jpg)
+ 
+*note:* A post does not have to have a photo.
+
+
+
 ## Technologies to use for this coding question(Required):
 * Node.js
 * Express.js
