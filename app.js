@@ -1,17 +1,35 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+/* File: app.js */
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+/* loading .env file */
+if (process.env.NODE_ENV === 'development') {
+  require('dotenv').config();
+}
 
-var app = express();
+let createError  = require('http-errors');
+let express      = require('express');
+let path         = require('path');
+let cookieParser = require('cookie-parser');
+let logger       = require('morgan');
+let fileUpload   = require('express-fileupload');
+let { authenticateCookieToken } = require('./auth');
+
+/* routers */
+let indexRouter        = require('./routes/index');
+let registrationRouter = require('./routes/registration');
+let loginRouter        = require('./routes/login');
+let postsRouter        = require('./routes/posts');
+let userRouter         = require('./routes/user');
+
+let app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
+
+// enable files upload
+app.use(fileUpload({
+    createParentPath: true
+}));
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -19,8 +37,13 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+/* Middleware */
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/register', registrationRouter);
+app.use('/login', loginRouter);
+app.use(authenticateCookieToken);
+app.use('/posts', postsRouter);
+app.use('/user', userRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
